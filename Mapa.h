@@ -2,6 +2,8 @@
 #define Mapa_h
 
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 const char PAREDE = 'P';
@@ -16,6 +18,8 @@ struct Mapa{
         VAZIO, PAREDE, VAZIO, VAZIO, VAZIO,
         VAZIO, VAZIO, VAZIO, VAZIO, VAZIO
     };
+    int posicEntradaX;
+    int posicEntradaY;
 };
 
 void mostrarMapa(Mapa mapa, int tamanho){
@@ -26,6 +30,22 @@ void mostrarMapa(Mapa mapa, int tamanho){
         cout << endl;
     }
     cout << "**********************************" << endl;
+}
+
+void gerarEntradaAleatoria(Mapa &mapa, int tamanho){
+    bool teste = true;
+    while(teste){
+        srand((int)time(0));
+        int rand1 = rand() % tamanho;
+        int rand2 = rand() % tamanho;
+
+        if(mapa.cenario[rand1][rand2] != 'P' && mapa.cenario[rand1][rand2] != 'Q'){
+            mapa.cenario[rand1][rand2] = 'E';
+            mapa.posicEntradaX = rand1;
+            mapa.posicEntradaY = rand2;
+            teste = false;
+        }            
+    }  
 }
 
 #endif
