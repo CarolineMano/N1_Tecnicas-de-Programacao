@@ -16,3 +16,5 @@ struct Mapa{
         VAZIO, VAZIO, VAZIO, VAZIO, VAZIO
     };
 };
+
+#endif
