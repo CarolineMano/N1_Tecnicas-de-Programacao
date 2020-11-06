@@ -2,7 +2,7 @@
 #define Rato_h
 
 const char NORTE = 'N';
-const char SUL = '';
+const char SUL = 'S';
 const char LESTE = 'L';
 const char OESTE = 'O';
 
