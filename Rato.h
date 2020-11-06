@@ -1,10 +1,10 @@
 #ifndef Rato_h
 #define Rato_h
 
-const char CIMA = 'C';
-const char BAIXO = 'B';
-const char DIREITA = 'D';
-const char ESQUERDA = 'E';
+const char NORTE = 'N';
+const char SUL = '';
+const char LESTE = 'L';
+const char OESTE = 'O';
 
 struct Rato{
     int posicaoX;
