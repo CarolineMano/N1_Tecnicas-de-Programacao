@@ -13,11 +13,11 @@ const char QUEIJO = 'Q';
 struct Mapa{
     char cenario[5][5] = {
         
-        VAZIO, PAREDE, PAREDE, VAZIO, VAZIO,
-        VAZIO, VAZIO, VAZIO, VAZIO, PAREDE,
-        VAZIO, PAREDE, VAZIO, VAZIO, VAZIO,
-        VAZIO, VAZIO, VAZIO, VAZIO, PAREDE,
-        VAZIO, PAREDE, QUEIJO, VAZIO, VAZIO
+        VAZIO,  PAREDE,  PAREDE, VAZIO,   VAZIO,
+        VAZIO,   VAZIO,   VAZIO, VAZIO,  PAREDE,
+        VAZIO,  PAREDE,   VAZIO, VAZIO,   VAZIO,
+        VAZIO,   VAZIO,   VAZIO, VAZIO,  PAREDE,
+        VAZIO,  PAREDE,  QUEIJO, VAZIO,  VAZIO
             
     };
     int posicEntradaX;
