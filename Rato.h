@@ -7,11 +7,11 @@ const char LESTE = 'L';
 const char OESTE = 'O';
 
 struct Rato{
-    int posicaoX;
-    int posicaoY;
+    int posicaoX = 0;
+    int posicaoY = 0;
     char icone = 'R';
     bool temQueijo = false;
-    char ultimoMovimento;
+    char deOndeVeio;
 };
 
 #endif
