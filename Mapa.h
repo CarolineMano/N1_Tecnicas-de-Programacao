@@ -17,7 +17,7 @@ struct Mapa{
         
         VAZIO,   VAZIO,  PAREDE, VAZIO,  QUEIJO,
         VAZIO,  PAREDE,   VAZIO, VAZIO,   VAZIO,
-        VAZIO,   VAZIO,   VAZIO, VAZIO,   VAZIO,
+        VAZIO,   VAZIO,  PAREDE, VAZIO,   VAZIO,
         VAZIO,  PAREDE,   VAZIO, VAZIO,  PAREDE,
         VAZIO,  PAREDE,   VAZIO, VAZIO,  VAZIO
             
@@ -33,6 +33,7 @@ void mostrarMapa(Mapa umMapa){
         cout << endl;
     }
     cout << "**********************************" << endl;
+    _sleep(500);
 }
 
 void gerarEntradaAleatoria(Mapa &umMapa, Rato &umRato){
@@ -52,9 +53,8 @@ void gerarEntradaAleatoria(Mapa &umMapa, Rato &umRato){
 }
 
 
-bool acharCaminhoAutomaticamente(Mapa &umMapa, int posicaoX, int posicaoY, char deOndeVeio){
+bool acharCaminhoAutomaticamente(Mapa &umMapa, int posicaoX, int posicaoY){
     mostrarMapa(umMapa);
-    _sleep(1000);
     if(posicaoX < 0 || posicaoX >= umMapa.tamanhoMatrix || posicaoY < 0 || posicaoY >= umMapa.tamanhoMatrix){
         return false;
     } else if(umMapa.cenario[posicaoX][posicaoY] == 'Q'){
@@ -64,13 +64,21 @@ bool acharCaminhoAutomaticamente(Mapa &umMapa, int posicaoX, int posicaoY, char 
         return false;
     } else{
         umMapa.cenario[posicaoX][posicaoY] = '+';
-        if(acharCaminhoAutomaticamente(umMapa, posicaoX - 1, posicaoY, deOndeVeio) && deOndeVeio != NORTE){
+        if(acharCaminhoAutomaticamente(umMapa, posicaoX - 1, posicaoY)){
+            umMapa.cenario[posicaoX][posicaoY] = '|';
+            mostrarMapa(umMapa);
             return true;
-        } else if(acharCaminhoAutomaticamente(umMapa, posicaoX, posicaoY + 1, deOndeVeio) && deOndeVeio != LESTE){
+        } else if(acharCaminhoAutomaticamente(umMapa, posicaoX, posicaoY + 1)){
+            umMapa.cenario[posicaoX][posicaoY] = '|';
+            mostrarMapa(umMapa);
             return true;
-        } else if(acharCaminhoAutomaticamente(umMapa, posicaoX + 1, posicaoY, deOndeVeio) && deOndeVeio != SUL){
+        } else if(acharCaminhoAutomaticamente(umMapa, posicaoX + 1, posicaoY)){
+            umMapa.cenario[posicaoX][posicaoY] = '|';
+            mostrarMapa(umMapa);
             return true;
-        } else if(acharCaminhoAutomaticamente(umMapa, posicaoX, posicaoY - 1, deOndeVeio) && deOndeVeio != OESTE){
+        } else if(acharCaminhoAutomaticamente(umMapa, posicaoX, posicaoY - 1)){
+            umMapa.cenario[posicaoX][posicaoY] = '|';
+            mostrarMapa(umMapa);
             return true;
         } else{
             umMapa.cenario[posicaoX][posicaoY] = '.';
