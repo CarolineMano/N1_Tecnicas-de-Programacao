@@ -7,6 +7,6 @@ int main(){
     Mapa jogo;
     Rato rato;
     gerarEntradaAleatoria(jogo, rato);
-    acharCaminhoAutomaticamente(jogo, rato.posicaoX, rato.posicaoY, rato.deOndeVeio);
+    acharCaminhoAutomaticamente(jogo, rato.posicaoX, rato.posicaoY);
     return 0;
 }
