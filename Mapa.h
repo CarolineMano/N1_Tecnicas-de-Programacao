@@ -8,9 +8,9 @@
 #include "Rato.h"
 using namespace std;
 
-const char PAREDE = 'P';
+const char PAREDE = 'WALL';
 const char VAZIO = '.';
-const char QUEIJO = 'Q';
+const char QUEIJO = 'QUEIJO';
 
 struct Mapa{
     char cenario[5][5] = {
@@ -43,8 +43,8 @@ void gerarEntradaAleatoria(Mapa &umMapa, Rato &umRato){
         int rand1 = rand() % umMapa.tamanhoMatrix;
         int rand2 = rand() % umMapa.tamanhoMatrix;
 
-        if(umMapa.cenario[rand1][rand2] != 'P' && umMapa.cenario[rand1][rand2] != 'Q'){
-            umMapa.cenario[rand1][rand2] = 'E';
+        if(umMapa.cenario[rand1][rand2] != 'WALL' && umMapa.cenario[rand1][rand2] != 'QUEIJO'){
+            umMapa.cenario[rand1][rand2] = 'ENTRADA';
             umRato.posicaoX = rand1;
             umRato.posicaoY = rand2;
             validacaoNaMatriz = false;
@@ -57,10 +57,10 @@ bool acharCaminhoAutomaticamente(Mapa &umMapa, int posicaoX, int posicaoY){
     mostrarMapa(umMapa);
     if(posicaoX < 0 || posicaoX >= umMapa.tamanhoMatrix || posicaoY < 0 || posicaoY >= umMapa.tamanhoMatrix){
         return false;
-    } else if(umMapa.cenario[posicaoX][posicaoY] == 'Q'){
+    } else if(umMapa.cenario[posicaoX][posicaoY] == 'QUEIJO'){
         cout << "Voce encontrou o queijo!" << endl;
         return true;
-    } else if(umMapa.cenario[posicaoX][posicaoY] == 'P' || umMapa.cenario[posicaoX][posicaoY] == '+'){
+    } else if(umMapa.cenario[posicaoX][posicaoY] == 'WALL' || umMapa.cenario[posicaoX][posicaoY] == '+'){
         return false;
     } else{
         umMapa.cenario[posicaoX][posicaoY] = '+';
