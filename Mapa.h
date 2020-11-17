@@ -11,6 +11,10 @@ using namespace std;
 const char PAREDE = 'P';
 const char VAZIO = '.';
 const char QUEIJO = 'Q';
+const char ENTRADA = 'E';
+const char RATO_VAI = '+';
+const char RATO_VOLTA = '/';
+
 
 struct Mapa{
     char cenario[5][5] = {
@@ -43,8 +47,8 @@ void gerarEntradaAleatoria(Mapa &umMapa, Rato &umRato){
         int rand1 = rand() % umMapa.tamanhoMatrix;
         int rand2 = rand() % umMapa.tamanhoMatrix;
 
-        if(umMapa.cenario[rand1][rand2] != 'P' && umMapa.cenario[rand1][rand2] != 'Q'){
-            umMapa.cenario[rand1][rand2] = 'E';
+        if(umMapa.cenario[rand1][rand2] != PAREDE && umMapa.cenario[rand1][rand2] != QUEIJO){
+            umMapa.cenario[rand1][rand2] = ENTRADA;
             umRato.posicaoX = rand1;
             umRato.posicaoY = rand2;
             validacaoNaMatriz = false;
@@ -57,34 +61,33 @@ bool acharCaminhoAutomaticamente(Mapa &umMapa, int posicaoX, int posicaoY){
     mostrarMapa(umMapa);
     if(posicaoX < 0 || posicaoX >= umMapa.tamanhoMatrix || posicaoY < 0 || posicaoY >= umMapa.tamanhoMatrix){
         return false;
-    } else if(umMapa.cenario[posicaoX][posicaoY] == 'Q'){
+    } else if(umMapa.cenario[posicaoX][posicaoY] == QUEIJO){
         cout << "Voce encontrou o queijo!" << endl;
         return true;
-    } else if(umMapa.cenario[posicaoX][posicaoY] == 'P' || umMapa.cenario[posicaoX][posicaoY] == '+'){
+    } else if(umMapa.cenario[posicaoX][posicaoY] == PAREDE || umMapa.cenario[posicaoX][posicaoY] == RATO_VAI){
         return false;
     } else{
-        umMapa.cenario[posicaoX][posicaoY] = '+';
+        umMapa.cenario[posicaoX][posicaoY] = RATO_VAI;
         if(acharCaminhoAutomaticamente(umMapa, posicaoX - 1, posicaoY)){
-            umMapa.cenario[posicaoX][posicaoY] = '|';
+            umMapa.cenario[posicaoX][posicaoY] = RATO_VOLTA;
             mostrarMapa(umMapa);
             return true;
         } else if(acharCaminhoAutomaticamente(umMapa, posicaoX, posicaoY + 1)){
-            umMapa.cenario[posicaoX][posicaoY] = '|';
+            umMapa.cenario[posicaoX][posicaoY] = RATO_VOLTA;
             mostrarMapa(umMapa);
             return true;
         } else if(acharCaminhoAutomaticamente(umMapa, posicaoX + 1, posicaoY)){
-            umMapa.cenario[posicaoX][posicaoY] = '|';
+            umMapa.cenario[posicaoX][posicaoY] = RATO_VOLTA;
             mostrarMapa(umMapa);
             return true;
         } else if(acharCaminhoAutomaticamente(umMapa, posicaoX, posicaoY - 1)){
-            umMapa.cenario[posicaoX][posicaoY] = '|';
+            umMapa.cenario[posicaoX][posicaoY] = RATO_VOLTA;
             mostrarMapa(umMapa);
             return true;
         } else{
-            umMapa.cenario[posicaoX][posicaoY] = '.';
+            umMapa.cenario[posicaoX][posicaoY] = VAZIO;
             return false;
         }
-        cout << "Nao foi possivel chegar ao queijo" << endl;
     }
 }
 
