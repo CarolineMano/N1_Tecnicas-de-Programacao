@@ -1,7 +1,7 @@
 # N1_Tecnicas-de-Programacao
  
 Projeto N1 da matéria de Técnicas de Programação
-Neste projeto, devemos implementar um algoritmo que gere um labirinto (5x5), que deverá ser percorrido automaticamente por um ratinho até encontrar um queijo disposto dentro do labirinto.
+Neste projeto, devemos implementar um algoritmo que gere um labirinto (5x5), que deverá ser percorrido automaticamente por um ratinho até encontrar um queijo disposto dentro do labirinto. O labirinto será ou não possível de ser percorrido a depender da localização da entrada aleatória. 
 Deverá ser utilizada recursividade para percorrer o labirinto.
 
 Integrantes:
